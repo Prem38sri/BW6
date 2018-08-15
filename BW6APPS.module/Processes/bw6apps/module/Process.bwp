@@ -454,116 +454,11 @@
                 </sequence>
             </complexType>
         </schema>
-        <xs:schema attributeFormDefault="unqualified"
-            elementFormDefault="qualified"
-            targetNamespace="http://www.tibcopsg.com/ESB/framework/audit/audit_activities_v1"
-            xmlns="http://www.tibcopsg.com/ESB/framework/audit/audit_activities_v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-            <xs:element name="logEventBase" type="log_event_base_type"/>
-            <xs:element name="appContext" type="nvp_list_type"/>
-            <!-- Audit activities schema-->
-            <xs:element name="logEventActivityIn" type="log_event_activity_in_type"/>
-            <xs:element name="getLogEventsActivityIn" type="get_log_events_activity_in_type"/>
-            <xs:element name="getLogEventsActivityOut" type="get_log_events_activity_out_type"/>
-            <xs:element name="logEventActivityOut" type="log_event_activity_out_type"/>
-            <!--****************************************************************************-->
-            <!-- input for logEvent Activity-->
-            <xs:complexType name="log_event_activity_in_type">
-                <xs:sequence>
-                    <xs:element name="logEventRecord" type="log_event_record_type"/>
-                </xs:sequence>
-            </xs:complexType>
-            <!-- input for logEvent Activity-->
-            <xs:complexType name="log_event_record_type">
-                <xs:sequence>
-                    <xs:element name="log" type="log_event_base_type"/>
-                    <xs:element minOccurs="0" name="appContext" type="nvp_list_type"/>
-                </xs:sequence>
-            </xs:complexType>
-            <!-- input for getLogEvents activity -->
-            <xs:complexType name="get_log_events_activity_in_type">
-                <xs:sequence>
-                    <xs:element name="contextId" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <!-- input for logEvent Activity-->
-            <xs:complexType name="log_event_activity_out_type">
-                <xs:sequence>
-                    <xs:element name="contextId" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <!-- output for getLogEvents activity -->
-            <xs:complexType name="get_log_events_activity_out_type">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0"
-                        name="logEventRecord" type="log_event_record_type"/>
-                </xs:sequence>
-            </xs:complexType>
-            <!-- base log event  -->
-            <xs:complexType name="log_event_base_type">
-                <xs:sequence>
-                    <xs:element name="contextId" type="xs:string"/>
-                    <xs:element name="timestamp" type="xs:dateTime"/>
-                    <xs:element name="processPath" type="xs:string"/>
-                    <xs:element name="role" type="xs:string"/>
-                    <xs:element minOccurs="0" name="code" type="xs:string"/>
-                    <xs:element minOccurs="0" name="txt" type="xs:string"/>
-                    <!-- BASE 64 encoded XML -->
-                    <xs:element minOccurs="0" name="bodyTxt" type="base64_body_type"/>
-                    <xs:element minOccurs="0" name="customStep" type="xs:string"/>
-                    <xs:element minOccurs="0" name="error" type="error_type"/>
-                    <xs:element minOccurs="0"
-                        name="disableMonitoringLookup" type="xs:boolean"/>
-                    <xs:element minOccurs="0"
-                        name="monitoringLogicProps" type="nvp_list_type"/>
-                    <!-- BASE 64 encoded XML -->
-                    <xs:element minOccurs="0" name="monitoringLogicBody" type="base64_body_type"/>
-                </xs:sequence>
-            </xs:complexType>
-            <!-- error attributes -->
-            <xs:complexType name="error_type">
-                <xs:sequence>
-                    <xs:element name="errType" type="xs:string"/>
-                    <xs:element name="errSeverity" type="xs:string"/>
-                    <xs:element minOccurs="0" name="errProcessStack" type="xs:string"/>
-                    <xs:element minOccurs="0" name="errInputData" type="xs:string"/>
-                    <xs:element minOccurs="0" name="errStackTrace" type="xs:string"/>
-                    <xs:element minOccurs="0" name="errIsNonTerminal" type="xs:boolean"/>
-                </xs:sequence>
-            </xs:complexType>
-            <!--Unrestricted NVP structure-->
-            <xs:complexType name="nvp_list_type">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0"
-                        name="nvpElement" type="nvp_element_type"/>
-                </xs:sequence>
-            </xs:complexType>
-            <!---->
-            <xs:complexType name="nvp_element_type">
-                <xs:sequence>
-                    <xs:element name="name" type="nvp_element_name_type"/>
-                    <xs:element name="value" type="nvp_element_value_type"/>
-                </xs:sequence>
-            </xs:complexType>
-            <!---->
-            <xs:simpleType name="nvp_element_name_type">
-                <xs:restriction base="xs:string">
-                    <xs:minLength value="1"/>
-                    <xs:maxLength value="64"/>
-                </xs:restriction>
-            </xs:simpleType>
-            <!---->
-            <xs:simpleType name="nvp_element_value_type">
-                <xs:restriction base="xs:string">
-                    <xs:minLength value="0"/>
-                </xs:restriction>
-            </xs:simpleType>
-            <!---->
-            <xs:simpleType name="base64_body_type">
-                <xs:restriction base="xs:string">
-                    <xs:minLength value="0"/>
-                </xs:restriction>
-            </xs:simpleType>
-        </xs:schema>
+        <wsdl:definitions
+            targetNamespace="http://xmlns.example.com/20180814155357"
+            xmlns:tns="http://xmlns.example.com/20180814155357"
+            xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
     </tibex:Types>
     <tibex:ProcessInfo callable="false" createdBy="x001047a"
         createdOn="Tue Aug 14 15:53:57 EDT 2018" description=""
@@ -667,41 +562,6 @@
                                     <layoutConstraint x="198"
                                     xsi:type="notation:Bounds" y="94"/>
                                     </children>
-                                    <children type="4002">
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <styles fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles
-                                    backgroundColor="16777215"
-                                    gradientEndColor="50431"
-                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.2"/>
-                                    <layoutConstraint x="316"
-                                    xsi:type="notation:Bounds" y="94"/>
-                                    </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -758,17 +618,6 @@
             <element href="//0/@process/@activity/@activity/@links/@children.0"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -782,10 +631,10 @@
             name="WriteFile-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns1:WriteActivityOutputClass"
             name="WriteFile" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:getLogEventsActivityIn"
-            name="getLogEvents-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:getLogEventsActivityOut"
-            name="getLogEvents" sca-bpel:internal="true"/>
+        <bpws:variable name="httpClientResource"
+            sca-bpel:hotUpdate="false" sca-bpel:privateProperty="true"
+            sca-bpel:property="yes"
+            sca-bpel:sharedResourceType="{http://xsd.tns.tibco.com/bw/models/sharedresource/httpclient}HttpClientConfiguration" type="xsd:string"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -799,7 +648,6 @@
         <bpws:flow name="flow">
             <bpws:links>
                 <bpws:link name="TimerToWriteFile" tibex:linkType="SUCCESS"/>
-                <bpws:link name="WriteFileTogetLogEvents" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -835,9 +683,6 @@
                     <bpws:targets>
                         <bpws:target linkName="TimerToWriteFile"/>
                     </bpws:targets>
-                    <bpws:sources>
-                        <bpws:source linkName="WriteFileTogetLogEvents"/>
-                    </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
                             expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/namespaces/tnt/plugins/file&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;WriteFile-input&quot; match=&quot;/&quot;>&lt;tns:WriteActivityInputTextClass>&lt;fileName>&lt;xsl:value-of select=&quot;&amp;quot;C:/cert/testprem.txt&amp;quot;&quot;/>&lt;/fileName>&lt;textContent>&lt;xsl:value-of select=&quot;&amp;quot;HI&amp;quot;&quot;/>&lt;/textContent>&lt;/tns:WriteActivityInputTextClass>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
@@ -852,34 +697,6 @@
                                     <type href="http://ns.tibco.com/bw/palette/file#//WriteFile"/>
                                     <value compressFile="None"
                                     encoding="text" xsi:type="file:WriteFile"/>
-                                </properties>
-                            </activityConfig>
-                        </bwext:BWActivity>
-                    </tibex:config>
-                </tibex:activityExtension>
-            </bpws:extensionActivity>
-            <bpws:extensionActivity>
-                <tibex:activityExtension
-                    inputVariable="getLogEvents-input"
-                    name="getLogEvents" outputVariable="getLogEvents"
-                    tibex:xpdlId="a5c5606e-0106-4416-b009-f389a2f0df54" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
-                    <bpws:targets>
-                        <bpws:target linkName="WriteFileTogetLogEvents"/>
-                    </bpws:targets>
-                    <tibex:inputBindings>
-                        <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?> &lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibcopsg.com/ESB/framework/audit/audit_activities_v1&quot; version=&quot;2.0&quot;> &lt;xsl:template name=&quot;getLogEvents-input&quot; match=&quot;/&quot;> &lt;tns:getLogEventsActivityIn/>&lt;/xsl:template> &lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
-                    </tibex:inputBindings>
-                    <tibex:config>
-                        <bwext:BWActivity
-                            activityTypeID="bw.esbaudit.getLogEvents"
-                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
-                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                            xmlns:esbaudit="http://ns.tibco.com/bw/palette/esbaudit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                            <activityConfig>
-                                <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/esbaudit#//getLogEvents"/>
-                                    <value xsi:type="esbaudit:getLogEvents"/>
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>
